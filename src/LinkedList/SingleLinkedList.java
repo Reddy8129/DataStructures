@@ -24,7 +24,15 @@ public class SingleLinkedList {
 		//Now we will connect them together to form a chain
 		ssl.head.next=second;//10-->20
 		second.next=third;//10-->20-->30
-		third.next=fourth;//10-->20-->30-->40-->null		
+		third.next=fourth;//10-->20-->30-->40-->null	
+		
+		ListNode current = ssl.head;
+		while(current!=null)
+		{
+			System.out.print(current.data + "-->");
+			current= current.next;
+		}
+		System.out.println("null");
 		
 	}
 }
