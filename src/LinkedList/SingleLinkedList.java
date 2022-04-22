@@ -14,6 +14,26 @@ public class SingleLinkedList {
 		}
 		
 	}
+	void display()
+	{
+		ListNode current = head;
+		while(current!=null)
+		{
+			System.out.print(current.data + "-->");
+			current= current.next;
+		}
+		System.out.println("null");
+		
+	}
+	int len(){
+		int count = 0;
+		ListNode current = head;
+		while(current!=null){
+			count++;
+			current= current.next;
+		}
+		return count;
+	}
 	public static void main(String[] args) {
 		SingleLinkedList ssl = new SingleLinkedList();
 		ssl.head= new ListNode(10);
@@ -26,13 +46,8 @@ public class SingleLinkedList {
 		second.next=third;//10-->20-->30
 		third.next=fourth;//10-->20-->30-->40-->null	
 		
-		ListNode current = ssl.head;
-		while(current!=null)
-		{
-			System.out.print(current.data + "-->");
-			current= current.next;
-		}
-		System.out.println("null");
+		ssl.display();
+		System.out.println(ssl.len());
 		
 	}
 }
