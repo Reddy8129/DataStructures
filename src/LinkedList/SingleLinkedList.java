@@ -34,6 +34,52 @@ public class SingleLinkedList {
 		}
 		return count;
 	}
+	
+	void insertNodeAtBeginning(int value)
+	{
+		ListNode newNode = new ListNode(value);
+		newNode.next=head;
+		head=newNode;
+	}
+	void insertNodeAtEnd(int value)
+	{
+		ListNode newNode = new ListNode(value);
+		if(head==null)
+		{
+			head=newNode;
+			return;
+		}
+		ListNode current = head;
+		while(null!=current.next)
+		{
+			current= current.next;
+		}
+		current.next= newNode;		
+	}
+	
+	void insertAt(int pos, int value)
+	{
+		ListNode newNode = new ListNode(value);
+
+		if(pos==1){
+			newNode.next=head;
+			head=newNode;
+		}
+		else
+		{
+			ListNode previous = head;
+			int count=1;
+			while(count<pos-1)
+			{
+				previous=previous.next;
+				count++;
+			}
+			newNode.next=previous.next;
+			previous.next=newNode;
+
+		}
+	}
+	
 	public static void main(String[] args) {
 		SingleLinkedList ssl = new SingleLinkedList();
 		ssl.head= new ListNode(10);
@@ -47,7 +93,19 @@ public class SingleLinkedList {
 		third.next=fourth;//10-->20-->30-->40-->null	
 		
 		ssl.display();
+		
 		System.out.println(ssl.len());
 		
+		//add new node at beginning
+		ssl.insertNodeAtBeginning(0);
+		ssl.display();
+		
+		//add new node at end
+		ssl.insertNodeAtEnd(50);
+		ssl.display();
+		
+		//add at position
+		ssl.insertAt(3, 15);
+		ssl.display();
 	}
 }
